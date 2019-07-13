@@ -19,6 +19,10 @@ body {
   background-color: #282c34;
 }
 
+h1 {
+  color: white;
+}
+
 .App {
   text-align: center;
 }
