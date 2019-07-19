@@ -10,7 +10,7 @@ export const Toggle = () => {
         // fontSize:   (isToggled) ? '2rem' : '20em',
         y:          (isToggled) ? 0 : -50,
         color:      (isToggled) ? 'black' : 'green',
-    });
+     });
 
     const {y, color} = fade;
 
