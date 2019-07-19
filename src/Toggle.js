@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {useSpring, animated} from 'react-spring';
 
+// const AnimatedComponent = animated(componentName);
+
 export const Toggle = () => {
     const [isToggled, setToggle] = useState(false);
     const fade                   = useSpring({
