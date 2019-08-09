@@ -17,7 +17,12 @@ export const Toggle = () => {
     return (
         <div>
             <animated.h1 style={{
-                transform: y.interpolate(y => `translate3d(0, ${y}px, 0)`),
+                transform: y
+                    .interpolate({
+                    range:  [0, .25, .75, 1],
+                    output: [0, -25, -50, -100, -50]
+                    })
+                    .interpolate(y => `translate3d(0, ${y}px, 0)`),
                 color
             }}>Hello</animated.h1> 
             <button onClick={() => setToggle(!isToggled)}>Toggle</button>  
