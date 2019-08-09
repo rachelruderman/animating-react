@@ -5,6 +5,7 @@ import './App.css';
 import Routes from './Routes';
 import Nav from './Nav';
 import Checkout from './Checkout';
+import Modal from './Modal';
 
 const App = () => {
     const [isNavOpen, setNavOpen] = useState(false);
@@ -31,6 +32,7 @@ const App = () => {
         </header>
         <main>
           <Routes/>
+          <Modal/>
           <Checkout lisOpen={isNavOpen}/>
         </main>
       </animated.div>
