@@ -8,7 +8,9 @@ import Nav from './Nav';
 const App = () => {
     const [isNavOpen, setNavOpen] = useState(false);
 
-    const navAnimation = useSpring({transform: (isNavOpen) ? `translate3d(0,0,0)` : `translate3d(100%,0,0)`});
+    const navAnimation = useSpring({transform: (isNavOpen) ? 
+                          `translate3d(0,0,0) scale(1)` : 
+                          `translate3d(100%,0,0) scale(0)`});
 
     const fade = useSpring({
       from: {
