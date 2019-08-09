@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Toggle } from './Toggle';
 import Nav from './Nav';
+import Checkout from './Checkout';
 
 const App = () => {
     const [isNavOpen, setNavOpen] = useState(false);
@@ -30,6 +31,7 @@ const App = () => {
         </header>
         <main>
           <Toggle/>
+          <Checkout lisOpen={isNavOpen}/>
         </main>
       </animated.div>
     );
