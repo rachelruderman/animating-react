@@ -1,30 +1,27 @@
 import React, {useState} from 'react';
-import {useSpring, animated} from 'react-spring';
+import {useTransition, animated} from 'react-spring';
 
 // const AnimatedComponent = animated(componentName);
 
 export const Toggle = () => {
     const [isToggled, setToggle] = useState(false);
-    const fade                   = useSpring({
-        // // opacity:    (isToggled) ? 1 : 0,
-        // fontSize:   (isToggled) ? '2rem' : '20em',
-        y:          (isToggled) ? 0 : -50,
-        color:      (isToggled) ? 'black' : 'green',
+    const transition             = useTransition(isToggled, null, {
+        from:   {opacity: 0},
+        enter:  {opacity: 1}, // final state when it has entered
+        leave:  {opacity: 0},
      });
 
-    const {y, color} = fade;
-
+    // Use transition for things you don't want to always be on the DOM
+    
     return (
         <div>
-            <animated.h1 style={{
-                transform: y
-                    .interpolate({
-                    range:  [0, .25, .75, 1],
-                    output: [0, -25, -50, -100, -50]
-                    })
-                    .interpolate(y => `translate3d(0, ${y}px, 0)`),
-                color
-            }}>Hello</animated.h1> 
+            {transition.map( ({item, key, props}) => (
+                item && (
+                    <animated.h1 key={key} style={props}>
+                        Hello
+                    </animated.h1> 
+                )
+            ))}
             <button onClick={() => setToggle(!isToggled)}>Toggle</button>  
         </div>
     )
