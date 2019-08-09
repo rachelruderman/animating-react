@@ -4,8 +4,16 @@ import {useTransition, animated} from 'react-spring';
 // const AnimatedComponent = animated(componentName);
 
 export const Toggle = () => {
-    const [isToggled, setToggle] = useState(false);
-    const transition             = useTransition(isToggled, null, {
+    const [items, setItems] = useState([
+        {letter: 'S', key: 1},
+        {letter: 'D', key: 3},
+        {letter: 'E', key: 4},
+        {letter: 'F', key: 5},
+        {letter: 'H', key: 6},
+        {letter: 'I', key: 7},
+    ]);
+
+    const transition = useTransition(items, (item) => item.key, {
         from:   {opacity: 0},
         enter:  {opacity: 1}, // final state when it has entered
         leave:  {opacity: 0},
@@ -14,15 +22,13 @@ export const Toggle = () => {
     // Use transition for things you don't want to always be on the DOM
     
     return (
-        <div>
+        <div style={{position: 'relative'}}>
             {transition.map( ({item, key, props}) => (
-                item && (
-                    <animated.h1 key={key} style={props}>
-                        Hello
-                    </animated.h1> 
-                )
+                <animated.h1 style={props} key={key}>
+                    {item.letter}
+                </animated.h1> 
             ))}
-            <button onClick={() => setToggle(!isToggled)}>Toggle</button>  
+            <button onClick={() => setItems([{letter: 'S, key: 1'}])}>Toggle</button>  
         </div>
     )
 }
