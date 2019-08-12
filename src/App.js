@@ -5,10 +5,11 @@ import './App.css';
 import Nav from './Nav';
 import Checkout from './Checkout';
 import Modal from './Modal';
+import Accordion from './Accordion';
 
 const App = () => {
     const [isNavOpen, setNavOpen] = useState(false);
-    
+
     const navAnimation = useSpring({transform: (isNavOpen) ? 
                           `translate3d(0,0,0) scale(1)` : 
                           `translate3d(100%,0,0) scale(0)`});
@@ -31,6 +32,7 @@ const App = () => {
         </header>
         <main>
           <Modal/>
+          <Accordion/>
           <Checkout lisOpen={isNavOpen}/>
         </main>
       </animated.div>
