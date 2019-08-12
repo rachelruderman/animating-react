@@ -12,6 +12,11 @@ const Gesture = () => {
     return (
         <animated.div 
             style={{
+                opacity: x.interpolate({
+                    map:    Math.abs,
+                    range:  [0, 400], 
+                    output: [1, 0]
+                }),
                 transform: x.interpolate( (x) => `translate3d(${x}px,0,0)`)
             }}
             {...bind()} 
