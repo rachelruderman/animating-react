@@ -6,7 +6,8 @@ const Gesture = () => {
     const [{x}, set] = useSpring( () => ({x: 0}) )
 
     const bind = useGesture( ({down, delta}) => {
-        set({x: down ? delta[0] : 0})
+        if  (down)  set({x: down ? delta[0] : 0})
+        else        set({x: (delta[0] > 400) ? 500 : 0}) 
     })
 
     return (
