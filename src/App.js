@@ -4,9 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './Nav';
 import Checkout from './Checkout';
-import Modal from './Modal';
-import Accordion from './Accordion';
-import Waypoints from './Waypoints';
+import Gesture from './Gesture';
 
 const App = () => {
     const [isNavOpen, setNavOpen] = useState(false);
@@ -32,9 +30,7 @@ const App = () => {
           <Nav style={navAnimation}/>
         </header>
         <main>
-          <Modal/>
-          <Accordion/>
-          <Waypoints/>
+          <Gesture/>
           <Checkout lisOpen={isNavOpen}/>
         </main>
       </animated.div>
