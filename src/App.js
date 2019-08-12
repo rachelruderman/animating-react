@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Nav from './Nav';
 import Checkout from './Checkout';
-import Gesture from './Gesture';
+import Boxes from './Boxes';
 
 const App = () => {
     const [isNavOpen, setNavOpen] = useState(false);
@@ -30,7 +30,7 @@ const App = () => {
           <Nav style={navAnimation}/>
         </header>
         <main>
-          <Gesture/>
+          <Boxes/>
           <Checkout lisOpen={isNavOpen}/>
         </main>
       </animated.div>
