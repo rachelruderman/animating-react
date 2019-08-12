@@ -1,18 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useGesture} from 'react-with-gesture';
 import {animated, useTrail} from 'react-spring';
 
 const items = [0.5, 0.3, 0.2, 0.7, 1];
 const Boxes = () => {
+
+    const [on, toggle] = useState(false);
     const trail = useTrail(items.length,
         {
-            from:   {opacity: 0},
-            to:     {opacity: 1}
+            opacity: on ? 0 : 1
         }
     )
 
     return (
         <div className='boxes-grid'>
+            <button onClick={() => toggle(!on)}>
+                Toggle
+            </button>
             {trail.map(animation => (
                 <animated.div className='box' style={animation}/>
          ))}
