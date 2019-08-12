@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react'
 import {useGesture} from 'react-with-gesture';
-import {animated, useTrail, useSpring, useChain} from 'react-spring';
+import {animated, useTrail, useSpring, useChain, useTransition} from 'react-spring';
 
 const items = [0.5, 0.3, 0.2, 0.7, 1];
 const Boxes = () => {
@@ -16,16 +16,21 @@ const Boxes = () => {
     })
     const transitionRef = useRef();
 
-    const trail = useTrail(items.length,
+    const transition = useTransition(on ? items : [], item => item,
         {
-            ref: transitionRef,
+            ref:    transitionRef,
+            trail:  700 / items.length,
             from: {
                 opacity:    0,
                 transform:  'scale(0)'
             },
-            to: {
-                opacity:    on ? 1 : 0,
-                transform:  on ? 'scale(1)' : 'scale(0)'
+            enter: {
+                opacity:    1,
+                transform:  'scale(1)'
+            },
+            leave: {
+                opacity:    0,
+                transform:  'scale(0)'
             }
 
         }
@@ -39,7 +44,7 @@ const Boxes = () => {
                 style={{width: size, height: size}} 
                 className='boxes-grid-two' 
                 onClick={() => toggle(!on)}>
-                {trail.map(animation => (
+                {transition.map( ({item, key, props: animation}) => (
                     <animated.div className='box-two' style={animation}/>
             ))}
             
